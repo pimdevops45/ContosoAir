@@ -15,7 +15,7 @@ resources:
       include:
        - master
 pool:
-
+  vmImage: ubuntu-latest
 
 steps:
 - task: DownloadPipelineArtifact@2
@@ -38,7 +38,6 @@ steps:
     csmParametersFile: '$(Pipeline.Workspace)/drop/Templates/azuredeploy.parameters.json'
     overrideParameters: '-p_environment $(web_environment) -p_site_prefix $(web_prefix) -p_site_web_name $(web_site)'
     deploymentMode: 'Incremental'
-  vmImage: ubuntu-latest
   
 - task: AzureRmWebAppDeployment@4
   inputs:
